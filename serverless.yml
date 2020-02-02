@@ -1,0 +1,29 @@
+service: developers-application-backend
+provider:
+  name: aws
+  region: eu-west-1
+  runtime: nodejs12.x
+functions:
+  developers:
+    handler: handler.app
+    environment:
+      DB_HOST: ${opt:DB_HOST}
+      DB_USER: ${opt:DB_USER}
+      DB_PASSWORD: ${opt:DB_PASSWORD}
+    events:
+      - http:
+          method: get
+          path: developers
+          cors: true
+      - http:
+          method: put
+          path: developers/{id}
+          cors: true
+      - http:
+          method: post
+          path: developers
+          cors: true
+      - http: 
+          method: delete
+          path: developers/{id}
+          cors: true
