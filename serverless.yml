@@ -3,6 +3,7 @@ provider:
   name: aws
   region: eu-west-1
   runtime: nodejs12.x
+
 functions:
   developers:
     handler: handler.app
@@ -20,10 +21,10 @@ functions:
           path: developers/{id}
           cors: true
       - http:
-          method: post
-          path: developers
-          cors: true
-      - http: 
           method: delete
           path: developers/{id}
+          cors: true
+      - http:
+          method: post
+          path: developers
           cors: true

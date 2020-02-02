@@ -146,7 +146,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/developers-application-backend/dev/1580645111419-2020-02-02T12:05:11.419Z/developers-application-backend.zip"
+          "S3Key": "serverless/developers-application-backend/dev/1580675625334-2020-02-02T20:33:45.334Z/developers-application-backend.zip"
         },
         "FunctionName": "developers-application-backend-dev-developers",
         "Handler": "handler.app",
@@ -160,11 +160,7 @@
         "Runtime": "nodejs12.x",
         "Timeout": 6,
         "Environment": {
-          "Variables": {
-            "DB_HOST": "tech-returners-database.c7c5yl7wtbre.eu-west-1.rds.amazonaws.com",
-            "DB_USER": "admin",
-            "DB_PASSWORD": "password"
-          }
+          "Variables": {}
         }
       },
       "DependsOn": [
@@ -172,14 +168,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "DevelopersLambdaVersionww26OKMXCYLKkJL1NkO1yYAOFxfQA9SLLmFWGUPrhI8": {
+    "DevelopersLambdaVersionM08f2y7mt5PjOdhpVnCdvWic8gwNYXFrIo9QraQY9Qw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DevelopersLambdaFunction"
         },
-        "CodeSha256": "ptbaKqAAs0HFTkCbxZNf5WZnlj4O3oahvHWlFeanui8="
+        "CodeSha256": "ETCJroYa6ZCZJNaf5k7RpjGSCyXAyojeKWbXVnwixnY="
       }
     },
     "ApiGatewayRestApi": {
@@ -397,49 +393,6 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodDevelopersPost": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
-        "HttpMethod": "POST",
-        "RequestParameters": {},
-        "ResourceId": {
-          "Ref": "ApiGatewayResourceDevelopers"
-        },
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        },
-        "ApiKeyRequired": false,
-        "AuthorizationType": "NONE",
-        "Integration": {
-          "IntegrationHttpMethod": "POST",
-          "Type": "AWS_PROXY",
-          "Uri": {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":apigateway:",
-                {
-                  "Ref": "AWS::Region"
-                },
-                ":lambda:path/2015-03-31/functions/",
-                {
-                  "Fn::GetAtt": [
-                    "DevelopersLambdaFunction",
-                    "Arn"
-                  ]
-                },
-                "/invocations"
-              ]
-            ]
-          }
-        },
-        "MethodResponses": []
-      }
-    },
     "ApiGatewayMethodDevelopersIdVarDelete": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -483,7 +436,50 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1580645105269": {
+    "ApiGatewayMethodDevelopersPost": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceDevelopers"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "DevelopersLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayDeployment1580675618664": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -496,8 +492,8 @@
         "ApiGatewayMethodDevelopersIdVarOptions",
         "ApiGatewayMethodDevelopersGet",
         "ApiGatewayMethodDevelopersIdVarPut",
-        "ApiGatewayMethodDevelopersPost",
-        "ApiGatewayMethodDevelopersIdVarDelete"
+        "ApiGatewayMethodDevelopersIdVarDelete",
+        "ApiGatewayMethodDevelopersPost"
       ]
     },
     "DevelopersLambdaPermissionApiGateway": {
@@ -547,7 +543,7 @@
     "DevelopersLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DevelopersLambdaVersionww26OKMXCYLKkJL1NkO1yYAOFxfQA9SLLmFWGUPrhI8"
+        "Ref": "DevelopersLambdaVersionM08f2y7mt5PjOdhpVnCdvWic8gwNYXFrIo9QraQY9Qw"
       }
     },
     "ServiceEndpoint": {
